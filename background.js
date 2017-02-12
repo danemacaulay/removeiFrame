@@ -1,9 +1,7 @@
 chrome.browserAction.onClicked.addListener(function(tab) {
-	console.log('Removing iframe from ' + tab.url);
-	chrome.tabs.executeScript(
-		null,
-		{
-			file: "removeiFrame.js"
-		}
-	);
+    chrome.tabs.executeScript(null, { file: 'toggleDomain.js'});
+});
+
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+    chrome.browserAction.setBadgeText(request);
 });
